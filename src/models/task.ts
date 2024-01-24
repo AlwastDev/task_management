@@ -8,6 +8,6 @@ export interface Task {
 
 export enum TaskStatus {
   Pending = 'Pending',
-  InProgress = 'In progress',
+  InProgress = 'InProgress',
   Completed = 'Completed',
 }

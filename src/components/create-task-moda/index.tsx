@@ -3,6 +3,7 @@ import { Button, Form, Modal } from 'react-bootstrap';
 
 import ModalContext from '../../store/modal-context';
 import { Task, TaskStatus } from '../../models/task';
+import { validationTask } from '../../helpers/validation';
 
 const defaultValue = {
   title: '',
@@ -12,7 +13,7 @@ const defaultValue = {
 };
 
 interface CreateTaskModalProps {
-  handleCreate: (task: Omit<Task, "id">) => void;
+  handleCreate: (task: Omit<Task, 'id'>) => void;
 }
 
 export const CreateTaskModal: FC<CreateTaskModalProps> = ({ handleCreate }) => {
@@ -44,10 +45,11 @@ export const CreateTaskModal: FC<CreateTaskModalProps> = ({ handleCreate }) => {
   };
 
   const handleSubmit = () => {
-    handleCreate(task);
-    toggleCreateModal();
+    if (validationTask(task)) {
+      handleCreate(task);
+      toggleCreateModal();
+    }
   };
-
 
   return (
     <Modal show={isOpenCreateModal} onHide={handleClose}>

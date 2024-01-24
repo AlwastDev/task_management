@@ -4,6 +4,7 @@ import { Button, Form, Modal } from 'react-bootstrap';
 import ModalContext from '../../store/modal-context';
 import { Task, TaskStatus } from '../../models/task';
 import { shallowEqual } from '../../helpers/helpers';
+import { validationTask } from '../../helpers/validation';
 
 interface EditTaskModalProps {
   handleEdit: (task: Task) => void;
@@ -44,6 +45,11 @@ export const EditTaskModal: FC<EditTaskModalProps> = ({ handleEdit, handleDelete
     }
   };
 
+  const onDelete = () => {
+    handleDelete(actualTask.id);
+    toggleEditModal();
+  };
+
   const handleClose = () => {
     if (!shallowEqual(task, actualTask)) {
       setTask(actualTask);
@@ -53,8 +59,10 @@ export const EditTaskModal: FC<EditTaskModalProps> = ({ handleEdit, handleDelete
   };
 
   const handleSubmit = () => {
-    handleEdit(task);
-    toggleEditModal();
+    if(validationTask(task)){
+      handleEdit(task);
+      toggleEditModal();
+    }
   };
 
   return (
@@ -95,7 +103,7 @@ export const EditTaskModal: FC<EditTaskModalProps> = ({ handleEdit, handleDelete
         </Form>
       </Modal.Body>
       <Modal.Footer>
-        <Button variant="outline-danger" onClick={() => handleDelete(actualTask.id)}>
+        <Button variant="outline-danger" onClick={onDelete}>
           Delete
         </Button>
         <div className="ms-auto">
