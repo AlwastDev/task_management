@@ -1,10 +1,9 @@
 import React, { FC, useContext } from 'react';
 import { Calendar, momentLocalizer } from 'react-big-calendar';
 import moment from 'moment';
+
 import ModalContext from '../../store/modal-context';
 import { Task } from '../../models/task';
-
-import './calendar-view.module.scss';
 
 const localizer = momentLocalizer(moment);
 

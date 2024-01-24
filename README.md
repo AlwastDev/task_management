@@ -6,13 +6,13 @@ Follow these steps to set up and run the project:
 
 ### Install Dependencies
 
-```yarn```
+```yarn``` or ```npm install```
 
 ### Run JSON Server:
 
 Start json-server to mimic the API. Run the following command:
 
-```yarn backend```
+```yarn backend``` or ```npm run backend```
 
 JSON Server will listen on port 3001 and use the db.json file to store data.
 
@@ -20,6 +20,6 @@ JSON Server will listen on port 3001 and use the db.json file to store data.
 
 To build and run the React application in development mode, run the following command:
 
-```yarn dev```
+```yarn dev``` or ```npm run dev```
 
 

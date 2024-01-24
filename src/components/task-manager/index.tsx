@@ -5,7 +5,8 @@ import { Task } from '../../models/task';
 import { createTask, deleteTask, editTask, fetchTasks } from '../../services/task-service';
 import ModalContext from '../../store/modal-context';
 import { CalendarView } from '../calendar-view';
-import { CreateTaskModal, EditTaskModal } from '../task-modal';
+import { EditTaskModal } from '../edit-task-modal';
+import { CreateTaskModal } from '../create-task-moda';
 
 import styles from './task-manager.module.scss';
 
